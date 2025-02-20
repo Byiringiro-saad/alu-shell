@@ -1,0 +1,8 @@
+#!/bin/bash
+find . -type f -name "*.gif" | sort -f | while read file; do
+    # Extract just the filename (not the path)
+    name=$(echo "$file" | rev | cut -d '/' -f 1 | rev)
+    # Remove the .gif extension
+    name_without_ext=$(echo "$name" | rev | cut -d '.' -f 2- | rev)
+    echo "$name_without_ext"
+done
