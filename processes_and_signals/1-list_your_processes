@@ -1,9 +1,3 @@
 #!/usr/bin/env bash
-# Display error message to stderr and exit
-error() {
-    echo "Error: $1" >&2
-    exit 1
-}
-
-command -v ps >/dev/null 2>&1 || error "ps command not found. Please install procps package."
-ps -ef --forest || error "Failed to retrieve process list"
+# Display all processes
+ps -eo user,pid,ppid,%cpu,%mem,stat,start,time,cmd --sort=ppid | less
